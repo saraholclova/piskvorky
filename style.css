@@ -16,6 +16,7 @@ body {
 
 img {
   border-radius: 5px 5px 0 0;
+  max-width: 100%;
 }
 
 .container {
@@ -23,7 +24,9 @@ img {
   flex-direction: column;
   width: 300px;
   height: auto;
-  /* margin: auto; */
+  min-height: 100%;
+
+  margin: auto;
   /* tohle mi katičku hodilo doprostřed, ale asi to není správně */
 }
 
@@ -40,18 +43,13 @@ img {
   flex-direction: column;
   align-items: center;
   color: white;
-  background-color: #1fcca4;
   font-size: 20px;
-
-
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .container__buttons a {
   color: white;
   text-decoration: none;
-
-
-
 }
 
 .container__buttons--play {
@@ -62,9 +60,9 @@ img {
 }
 
 .container__buttons--rules {
+  background-color: #1fcca4;
   padding: 15px 150px;
   border: 1px solid black;
-
 }
 
 .container__buttons--rules:hover {
@@ -74,12 +72,3 @@ img {
 .container__buttons--play:hover {
   background: #0090e9;
 }
-
-/* .container__buttons--rules {
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.container__buttons--play {
-  padding: 10px;
-} */
