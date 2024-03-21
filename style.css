@@ -1,0 +1,39 @@
+.lobster-regular {
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-family: Lobster;
+}
+
+body {
+  background: linear-gradient(#615dad, #ffc8da);
+  background-repeat: no-repeat;
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  /* tohle mi katičku hodilo doprostřed, ale asi to není správně */
+}
+
+.container__content {
+  background-color: #283e50;
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.container__buttons {
+  display: flex;
+  flex-direction: column;
+}
