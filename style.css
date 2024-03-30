@@ -86,3 +86,21 @@ img {
 .container__buttons--play:hover {
   background: #0090e9;
 }
+
+.main {
+  display: flex;
+  justify-content: center;
+  max-width: 80vmin;
+}
+
+.headline {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  color: #ffffff;
+}
+
+.main__indicators {
+  display: flex;
+  justify-content: space-between;
+}
