@@ -181,3 +181,20 @@ button:focus {
   background-color: #d9d4e6;
   cursor: pointer;
 }
+
+.game__square--cross {
+  background-image: url(images/cross.svg);
+}
+
+.game__square--circle {
+  background-image: url(images/circle.svg);
+
+}
+
+.game__square--cross,
+.game__square--circle {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  color: black;
+}
