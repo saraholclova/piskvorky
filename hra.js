@@ -1,7 +1,16 @@
 let currentPlayer = 'circle';
 
 const selectButton = (event) => {
-  event.target.classList.add('game__square--circle');
+  event.target.disabled = true;
+  if (currentPlayer === 'circle') {
+    event.target.classList.add('game__square--circle');
+    currentPlayer = 'cross';
+    document.getElementsByClassName('game__symbol').src = 'images/cross.svg';
+  } else {
+    event.target.classList.add('game__square--cross');
+    currentPlayer = 'circle';
+    document.getElementsByClassName('game__symbol').src = 'images/circle.svg';
+  }
 };
 
 document
