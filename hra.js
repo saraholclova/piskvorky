@@ -60,6 +60,7 @@ const confirm = () => {
   if (window.confirm('Chcete tuto hru restartovat?')) {
     window.location.reload();
   } else {
+    event.preventDefault();
   }
 };
 
