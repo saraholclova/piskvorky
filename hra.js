@@ -58,7 +58,7 @@ const restart = document.querySelector('.game__nav--restart');
 
 const confirm = () => {
   if (window.confirm('Chcete tuto hru restartovat?')) {
-    window.location.reload();
+    // window.location.reload();
   } else {
     event.preventDefault();
   }

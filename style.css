@@ -191,9 +191,22 @@ button:focus {
 
 }
 
+/* //BONUS 2*/
+
 .game__square--cross,
 .game__square--circle {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 70%;
+  animation: grow 0.2s forwards;
+}
+
+@keyframes grow {
+  from {
+    background-size: 0;
+  }
+
+  to {
+    background-size: 1;
+  }
 }
