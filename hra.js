@@ -23,31 +23,37 @@ allButtons.forEach((button) => {
   button.addEventListener('click', selectButton);
 });
 
-// const herniPole = ['_', 'o', 'x', 'x', 'o', '_', '_', 'o', '_']; vymyslet vlastní?
-
 //tvorba vlastního pole z buttonků//
 
 const buttonElm = Array.from(allButtons);
-console.log(buttonSquare);
 
 //procházení všech políček pomocí .map//
 
-const gameField = buttonElm.map((element) => {
-  if (element.classList.constains('game__square--circle')) {
+const gameField = buttonElm.map((button) => {
+  if (button.classList.constains('game__square--circle')) {
     return 'o';
-  } else if (element.classList.contains('game__square--cross')) {
+  } else if (button.classList.contains('game__square--cross')) {
     return 'x';
   } else {
     return '_';
   }
 });
 
-//předání pole funkci findWinner//
+//předání pole funkci findWinner, kdo je vítěz + hláška alert//
 
-const winner = findWinner(herniPole);
-if (winner === 'o' || winner === 'x') {
-  alert(`Vyhrál hráč se symbolem ${winner}.`); // Vyhrál hráč se symbolem 'o' nebo 'x'.
-}
+const winnerIs = () => {
+  const winner = findWinner(gameField);
+
+  if (winner === 'o') {
+    alert('Kolečko vyhrává!');
+    location.reload();
+  } else if (winner === 'x') {
+    alert('Křížek vyhrává!');
+    location.reload();
+  } else if (winner === 'tie') {
+  }
+};
+setTimeout(winnerIs, 250);
 
 ///BONUS úkol 3///
 const restart = document.querySelector('.game__nav--restart');
