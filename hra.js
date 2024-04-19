@@ -1,3 +1,5 @@
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
+
 let currentPlayer = 'circle';
 
 const selectButton = (event) => {
@@ -13,47 +15,41 @@ const selectButton = (event) => {
   }
 };
 
-document
-  .querySelector('button:nth-child(1)')
-  .addEventListener('click', selectButton);
+//Výběr všech tlačítek + nasazení posluchače//
 
-document
-  .querySelector('button:nth-child(2)')
-  .addEventListener('click', selectButton);
+const allButtons = document.querySelectorAll('.game__square');
 
-document
-  .querySelector('button:nth-child(3)')
-  .addEventListener('click', selectButton);
+allButtons.forEach((button) => {
+  button.addEventListener('click', selectButton);
+});
 
-document
-  .querySelector('button:nth-child(4)')
-  .addEventListener('click', selectButton);
+// const herniPole = ['_', 'o', 'x', 'x', 'o', '_', '_', 'o', '_']; vymyslet vlastní?
 
-document
-  .querySelector('button:nth-child(5)')
-  .addEventListener('click', selectButton);
+//tvorba vlastního pole z buttonků//
 
-document
-  .querySelector('button:nth-child(6)')
-  .addEventListener('click', selectButton);
+const buttonElm = Array.from(allButtons);
+console.log(buttonSquare);
 
-document
-  .querySelector('button:nth-child(7)')
-  .addEventListener('click', selectButton);
+//procházení všech políček pomocí .map//
 
-document
-  .querySelector('button:nth-child(8)')
-  .addEventListener('click', selectButton);
+const gameField = buttonElm.map((element) => {
+  if (element.classList.constains('game__square--circle')) {
+    return 'o';
+  } else if (element.classList.contains('game__square--cross')) {
+    return 'x';
+  } else {
+    return '_';
+  }
+});
 
-document
-  .querySelector('button:nth-child(9)')
-  .addEventListener('click', selectButton);
+//předání pole funkci findWinner//
 
-document
-  .querySelector('button:nth-child(10)')
-  .addEventListener('click', selectButton);
+const winner = findWinner(herniPole);
+if (winner === 'o' || winner === 'x') {
+  alert(`Vyhrál hráč se symbolem ${winner}.`); // Vyhrál hráč se symbolem 'o' nebo 'x'.
+}
 
-///BONUS///
+///BONUS úkol 3///
 const restart = document.querySelector('.game__nav--restart');
 
 const confirm = () => {
