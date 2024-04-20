@@ -13,6 +13,38 @@ const selectButton = (event) => {
     currentPlayer = 'circle';
     document.querySelector('.game__symbol').src = 'images/circle.svg';
   }
+
+  //tvorba vlastního pole z buttonků//
+
+  const buttonElm = Array.from(allButtons);
+
+  //procházení všech políček pomocí .map//
+
+  const gameField = buttonElm.map((button) => {
+    if (button.classList.contains('game__square--circle')) {
+      return 'o';
+    } else if (button.classList.contains('game__square--cross')) {
+      return 'x';
+    } else {
+      return '_';
+    }
+  });
+
+  //předání pole funkci findWinner, kdo je vítěz + hláška alert//
+
+  const winnerIs = () => {
+    const winner = findWinner(gameField);
+
+    if (winner === 'o') {
+      alert('Kolečko vyhrává!');
+      location.reload();
+    } else if (winner === 'x') {
+      alert('Křížek vyhrává!');
+      location.reload();
+    } else if (winner === 'tie') {
+    }
+  };
+  setTimeout(winnerIs, 250);
 };
 
 //Výběr všech tlačítek + nasazení posluchače//
@@ -22,38 +54,6 @@ const allButtons = document.querySelectorAll('.game__square');
 allButtons.forEach((button) => {
   button.addEventListener('click', selectButton);
 });
-
-//tvorba vlastního pole z buttonků//
-
-const buttonElm = Array.from(allButtons);
-
-//procházení všech políček pomocí .map//
-
-const gameField = buttonElm.map((button) => {
-  if (button.classList.constains('game__square--circle')) {
-    return 'o';
-  } else if (button.classList.contains('game__square--cross')) {
-    return 'x';
-  } else {
-    return '_';
-  }
-});
-
-//předání pole funkci findWinner, kdo je vítěz + hláška alert//
-
-const winnerIs = () => {
-  const winner = findWinner(gameField);
-
-  if (winner === 'o') {
-    alert('Kolečko vyhrává!');
-    location.reload();
-  } else if (winner === 'x') {
-    alert('Křížek vyhrává!');
-    location.reload();
-  } else if (winner === 'tie') {
-  }
-};
-setTimeout(winnerIs, 250);
 
 ///BONUS úkol 3///
 const restart = document.querySelector('.game__nav--restart');
