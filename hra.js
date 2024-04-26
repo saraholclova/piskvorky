@@ -67,3 +67,21 @@ const confirm = () => {
 };
 
 restart.addEventListener('click', confirm);
+
+//odeslání požadavku na API
+
+const squares = document.querySelectorAll('.game__field');
+
+const response = await fetch(
+  'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      board: gameField,
+      player: 'x',
+    }),
+  },
+);
