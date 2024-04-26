@@ -70,8 +70,6 @@ restart.addEventListener('click', confirm);
 
 //odeslání požadavku na API
 
-const squares = document.querySelectorAll('.game__field');
-
 const response = await fetch(
   'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
   {
@@ -85,3 +83,12 @@ const response = await fetch(
     }),
   },
 );
+
+//získání odpovědi z API
+
+const data = await response.json();
+const { x, y } = data.position;
+const index = allButtons[x + y * 10];
+
+//tlačítko se odklikne pomocí umělé inteligence
+index.click();
