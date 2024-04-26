@@ -2,7 +2,7 @@ import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
 
 let currentPlayer = 'circle';
 
-const selectButton = (event) => {
+const selectButton = async (event) => {
   event.target.disabled = true;
   if (currentPlayer === 'circle') {
     event.target.classList.add('game__square--circle');
@@ -45,6 +45,31 @@ const selectButton = (event) => {
     }
   };
   setTimeout(winnerIs, 250);
+
+  //odeslání požadavku na API
+
+  const response = await fetch(
+    'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        board: gameField,
+        player: 'x',
+      }),
+    },
+  );
+
+  //získání odpovědi z API
+
+  const data = await response.json();
+  const { x, y } = data.position;
+  const index = allButtons[x + y * 10];
+
+  //tlačítko se odklikne pomocí umělé inteligence
+  index.click();
 };
 
 //Výběr všech tlačítek + nasazení posluchače//
@@ -67,28 +92,3 @@ const confirm = () => {
 };
 
 restart.addEventListener('click', confirm);
-
-//odeslání požadavku na API
-
-const response = await fetch(
-  'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
-  {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      board: gameField,
-      player: 'x',
-    }),
-  },
-);
-
-//získání odpovědi z API
-
-const data = await response.json();
-const { x, y } = data.position;
-const index = allButtons[x + y * 10];
-
-//tlačítko se odklikne pomocí umělé inteligence
-index.click();
