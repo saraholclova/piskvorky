@@ -69,7 +69,9 @@ const selectButton = async (event) => {
   const index = allButtons[x + y * 10];
 
   //tlačítko se odklikne pomocí umělé inteligence
-  index.click();
+  if (currentPlayer === 'cross') {
+    index.click();
+  }
 };
 
 //Výběr všech tlačítek + nasazení posluchače//
